@@ -9,10 +9,16 @@ import com.notepad.repository.NotesRepository;
 @Service
 public class NotesService {
 
-	@Autowired NotesRepository notesRepository;
-	
+	@Autowired
+	NotesRepository notesRepository;
+
 	public Iterable<Notes> getNotes() {
 		return this.notesRepository.findAll();
 	}
-	
+
+	public Notes saveNotes(Notes notes) {
+		if (notes != null)
+			return this.notesRepository.save(notes);
+		return null;
+	}
 }
